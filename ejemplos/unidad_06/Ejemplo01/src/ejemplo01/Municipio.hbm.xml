@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ejemplo01.Municipio" table="Municipios" >
+        <id name="idMunicipio" type="integer"  >
+            <generator class="identity" />
+        </id>
+        <property name="codProvincia" />
+        <property name="codMunicipio" />
+        <property name="nombre" column="NombreMunicipio" />
+    </class> 
+</hibernate-mapping>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ejemplo04.Profesor" >
+        <id column="Id" name="id" type="integer" >
+            <generator class="increment" />
+        </id>
+    
+        <component name="nombre">
+            <property name="nombre" />
+            <property name="ape1" />
+            <property name="ape2" />
+        </component>
+    
+        <one-to-one name="direccion" cascade="all" />
+    
+        <set name="correosElectronicos"  cascade="all" inverse="true"   >
+            <key>
+                <column name="idProfesor" />
+            </key>            
+            <one-to-many class="ejemplo04.CorreoElectronico" />
+        </set>
+    </class>
+</hibernate-mapping>
+

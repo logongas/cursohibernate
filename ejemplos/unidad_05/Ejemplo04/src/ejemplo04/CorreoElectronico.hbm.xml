@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="ejemplo04.CorreoElectronico" >
+    <id column="IdCorreo" name="idCorreo" type="integer" />
+    <property name="direccionCorreo" />
+
+
+    <many-to-one name="profesor" >
+            <column name="idProfesor"  />
+    </many-to-one>
+
+
+  </class>
+</hibernate-mapping>
+

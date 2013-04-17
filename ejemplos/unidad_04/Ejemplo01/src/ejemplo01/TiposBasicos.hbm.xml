@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="ejemplo01.TiposBasicos" >
+      <id name="inte" type="integer"  />
+      <property name="long1"  type="long" />
+      <property name="short1"  type="short" />
+      <property name="float1"  type="float" />
+      <property name="double1"  type="double" />
+      <property name="character1"  type="character" />
+      <property name="byte1"  type="byte" />
+      <property name="boolean1"  type="boolean" />
+      <property name="yesno1"  type="yes_no" />
+      <property name="truefalse1"  type="true_false" />
+      <property name="stri"  type="string" />  
+      <property name="dateDate"  type="date" />      
+      <property name="dateTime"  type="time" />
+      <property name="dateTimestamp"  type="timestamp" />      
+      <property name="texto"  type="text" />    
+      <property name="binario"  type="binary" />    
+      <property name="bigDecimal"  type="big_decimal" />      
+      <property name="bigInteger"  type="big_integer" />  
+  </class> 
+</hibernate-mapping>

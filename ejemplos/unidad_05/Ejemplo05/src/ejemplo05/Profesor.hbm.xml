@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="ejemplo05.Profesor" >
+    <id column="Id" name="id" type="integer" >
+        <generator class="increment" />
+    </id>
+    <property name="nombre" />
+    <property name="ape1" />
+    <property name="ape2" />
+    
+    <set name="correosElectronicos"  cascade="all" inverse="true"   >
+        <key>
+            <column name="idProfesor" />
+        </key>            
+        <one-to-many class="ejemplo05.CorreoElectronico" />
+    </set>
+    
+    <sql-insert>INSERT INTO Profesor (Nombre,Ape1,Ape2,Id) VALUES (?,?,?,?)</sql-insert>
+    <sql-update>UPDATE Profesor SET Nombre=?,Ape1=?,Ape2=? WHERE Id=? </sql-update>
+    <sql-delete>DELETE FROM Profesor WHERE Id=?</sql-delete>
+  </class>
+</hibernate-mapping>
+

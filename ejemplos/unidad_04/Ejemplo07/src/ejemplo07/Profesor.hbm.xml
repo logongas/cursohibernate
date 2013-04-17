@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="ejemplo07.Profesor">
+    <id column="Id" name="id" type="integer"/>
+    <property name="nombre"/>
+    <property name="ape1"/>
+    <property name="ape2"/>
+    <property name="tipoFuncionario">
+      <type name="org.hibernate.type.EnumType">
+        <param name="enumClass">ejemplo07.TipoFuncionario</param>
+        <param name="type">4</param>
+      </type>
+    </property>
+  </class>
+</hibernate-mapping>

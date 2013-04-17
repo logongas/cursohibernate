@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="ejemplo07.Profesor" >
+    <id column="Id" name="id" type="integer"/>
+    <property name="nombre" />
+    <property name="ape1" />
+    <property name="ape2" />
+    
+    <list name="correosElectronicos"  cascade="all" inverse="false"  >
+        <key>
+            <column name="idProfesor"  />
+        </key> 
+        <list-index>
+            <column name="Idx"  />
+        </list-index>
+        <one-to-many class="ejemplo07.CorreoElectronico" />
+    </list>
+  </class>
+</hibernate-mapping>
+
