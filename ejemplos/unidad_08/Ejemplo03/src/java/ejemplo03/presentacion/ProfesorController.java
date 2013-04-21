@@ -135,6 +135,9 @@ public class ProfesorController {
             viewName = "redirect:/index.html";
         } catch (BussinessException ex) {
             model.put("bussinessMessages", ex.getBussinessMessages());
+            if (profesor!=null) {
+                profesor.setId(0);
+            }
             model.put("profesor", profesor);
             model.put("formOperation", FormOperation.Insert);
             viewName = "profesor";
