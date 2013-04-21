@@ -9,8 +9,7 @@ package ejemplo03.presentacion;
  * @author Lorenzo
  */
 public enum FormOperation {
-    Create,
-    Read,
+    Insert,
     Update,
     Delete
 }

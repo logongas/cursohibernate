@@ -4,7 +4,6 @@
  */
 package com.fpmislata.persistencia.dao.impl;
 
-
 import com.fpmislata.persistencia.dao.GenericDAO;
 import com.fpmislata.persistencia.dao.BussinessMessage;
 import com.fpmislata.persistencia.dao.BussinessException;
@@ -22,13 +21,10 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
 
     @Autowired
     SessionFactory sessionFactory;
-
     private final static Logger LOGGER = Logger.getLogger(GenericDAOImplHibernate.class.getName());
 
     public GenericDAOImplHibernate() {
     }
-
-
 
     @Override
     public T create() throws BussinessException {
@@ -54,7 +50,7 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
                     session.getTransaction().rollback();
                 }
             } catch (Exception exc) {
-                LOGGER.log(Level.WARNING,"Falló al hacer un rollback", exc);
+                LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
             }
             throw new BussinessException(cve);
         } catch (org.hibernate.exception.ConstraintViolationException cve) {
@@ -63,7 +59,7 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
                     session.getTransaction().rollback();
                 }
             } catch (Exception exc) {
-                LOGGER.log(Level.WARNING,"Falló al hacer un rollback", exc);
+                LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
             }
             throw new BussinessException(cve);
         } catch (RuntimeException ex) {
@@ -72,7 +68,7 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
                     session.getTransaction().rollback();
                 }
             } catch (Exception exc) {
-                LOGGER.log(Level.WARNING,"Falló al hacer un rollback", exc);
+                LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
             }
             throw ex;
         } catch (Exception ex) {
@@ -81,7 +77,7 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
                     session.getTransaction().rollback();
                 }
             } catch (Exception exc) {
-                LOGGER.log(Level.WARNING,"Falló al hacer un rollback", exc);
+                LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
             }
             throw new RuntimeException(ex);
         }
@@ -102,7 +98,7 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
                     session.getTransaction().rollback();
                 }
             } catch (Exception exc) {
-                LOGGER.log(Level.WARNING,"Falló al hacer un rollback", exc);
+                LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
             }
             throw new BussinessException(cve);
         } catch (org.hibernate.exception.ConstraintViolationException cve) {
@@ -111,7 +107,7 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
                     session.getTransaction().rollback();
                 }
             } catch (Exception exc) {
-                LOGGER.log(Level.WARNING,"Falló al hacer un rollback", exc);
+                LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
             }
             throw new BussinessException(cve);
         } catch (RuntimeException ex) {
@@ -120,7 +116,7 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
                     session.getTransaction().rollback();
                 }
             } catch (Exception exc) {
-                LOGGER.log(Level.WARNING,"Falló al hacer un rollback", exc);
+                LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
             }
             throw ex;
         } catch (Exception ex) {
@@ -129,7 +125,7 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
                     session.getTransaction().rollback();
                 }
             } catch (Exception exc) {
-                LOGGER.log(Level.WARNING,"Falló al hacer un rollback", exc);
+                LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
             }
             throw new RuntimeException(ex);
         }
@@ -152,7 +148,7 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
                     session.getTransaction().rollback();
                 }
             } catch (Exception exc) {
-                LOGGER.log(Level.WARNING,"Falló al hacer un rollback", exc);
+                LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
             }
             throw new BussinessException(cve);
         } catch (org.hibernate.exception.ConstraintViolationException cve) {
@@ -161,7 +157,7 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
                     session.getTransaction().rollback();
                 }
             } catch (Exception exc) {
-                LOGGER.log(Level.WARNING,"Falló al hacer un rollback", exc);
+                LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
             }
             throw new BussinessException(cve);
         } catch (BussinessException ex) {
@@ -170,7 +166,7 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
                     session.getTransaction().rollback();
                 }
             } catch (Exception exc) {
-                LOGGER.log(Level.WARNING,"Falló al hacer un rollback", exc);
+                LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
             }
             throw ex;
         } catch (RuntimeException ex) {
@@ -179,7 +175,7 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
                     session.getTransaction().rollback();
                 }
             } catch (Exception exc) {
-                LOGGER.log(Level.WARNING,"Falló al hacer un rollback", exc);
+                LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
             }
             throw ex;
         } catch (Exception ex) {
@@ -188,7 +184,7 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
                     session.getTransaction().rollback();
                 }
             } catch (Exception exc) {
-                LOGGER.log(Level.WARNING,"Falló al hacer un rollback", exc);
+                LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
             }
             throw new RuntimeException(ex);
         }
@@ -198,9 +194,11 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
     public List<T> findAll() throws BussinessException {
         Session session = sessionFactory.getCurrentSession();
         try {
-
+            session.beginTransaction();
             Query query = session.createQuery("SELECT e FROM " + getEntityClass().getName() + " e");
             List<T> entities = query.list();
+            session.getTransaction().commit();
+
 
             return entities;
         } catch (javax.validation.ConstraintViolationException cve) {
@@ -209,7 +207,7 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
                     session.getTransaction().rollback();
                 }
             } catch (Exception exc) {
-                LOGGER.log(Level.WARNING,"Falló al hacer un rollback", exc);
+                LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
             }
             throw new BussinessException(cve);
         } catch (org.hibernate.exception.ConstraintViolationException cve) {
@@ -218,7 +216,7 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
                     session.getTransaction().rollback();
                 }
             } catch (Exception exc) {
-                LOGGER.log(Level.WARNING,"Falló al hacer un rollback", exc);
+                LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
             }
             throw new BussinessException(cve);
         } catch (RuntimeException ex) {
@@ -227,7 +225,7 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
                     session.getTransaction().rollback();
                 }
             } catch (Exception exc) {
-                LOGGER.log(Level.WARNING,"Falló al hacer un rollback", exc);
+                LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
             }
             throw ex;
         } catch (Exception ex) {
@@ -236,7 +234,7 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
                     session.getTransaction().rollback();
                 }
             } catch (Exception exc) {
-                LOGGER.log(Level.WARNING,"Falló al hacer un rollback", exc);
+                LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
             }
             throw new RuntimeException(ex);
         }
