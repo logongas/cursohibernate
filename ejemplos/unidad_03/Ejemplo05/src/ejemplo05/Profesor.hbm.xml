@@ -6,11 +6,11 @@
     <property name="nombre" />
     <property name="ape1" />
     <property name="ape2" />
-
-    <set name="correosElectronicos"  cascade="all" inverse="false"   >
+    
+    <set name="correosElectronicos"  cascade="all" inverse="true"   >
         <key>
             <column name="idProfesor" />
-        </key>
+        </key>            
         <one-to-many class="ejemplo05.CorreoElectronico" />
     </set>
   </class>
