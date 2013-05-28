@@ -1,6 +1,8 @@
 package ejemplo05;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -37,8 +39,12 @@ public class Main {
 
         {
             System.out.println("----------- SOLUCION al n+1 SELECT con join -----------");
-            Query query = session.createQuery("SELECT p FROM Profesor p JOIN FETCH p.correosElectronicos");
+            Query query = session.createQuery("SELECT p FROM Profesor p LEFT JOIN FETCH p.correosElectronicos");
             List<Profesor> profesores = query.list();
+
+            Set<Profesor> profesoresSinDuplicar = new HashSet<Profesor>(profesores);
+            profesores.clear();
+            profesores.addAll(profesoresSinDuplicar);
 
             for (Profesor profesor : profesores) {
                 System.out.println(profesor.toString());
