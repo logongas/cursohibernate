@@ -30,9 +30,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class ProfesorController {
 
     @Autowired
-    SessionFactory sessionFactory;
-
-    @Autowired
     private ProfesorDAO profesorDAO;
 
     @RequestMapping({"/profesor/newForInsert"})
